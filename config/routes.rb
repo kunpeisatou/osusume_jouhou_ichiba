@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get 'search' => 'homes#search', as: 'search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :items, except: [:destroy]
+    resources :items
     resources :categories, only: [:index, :create, :edit, :update]
   end
 
