@@ -18,8 +18,8 @@
               <th><%= f.text_area :introduction , :size=>"33x5"%></th>
             </tr>
             <tr>
-              <th>ジャンル</th>
-              <th><%= f.collection_select :genre_id, Category.all, :id, :name, include_blank: "-- 選択してください --"  %></th>
+              <th>カテゴリ</th>
+              <th><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "-- 選択してください --"  %></th>
             </tr>
             <tr>
               <th>

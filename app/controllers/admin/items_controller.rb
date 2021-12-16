@@ -5,17 +5,19 @@ class Admin::ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    # if
-    @item.save
-    redirect_to admin_item_path(@item)
-    # else
-    #   redirect_to request.referer,notice:"新規登録できませんでした"
-    # end 
+    @item.admin_id = current_admin.id
+    if @item.save
+      #redirect_to admin_item_path(@item)
+      redirect_to admin_items_path
+    else
+      @item=Item.new
+      render :new
+    end 
   end
   
   def index
-    #@post_images = PostImage.allを削除。左記の場合全ての画像を表示してしまうため。
-    #@books = Item.page(params[:page]).reverse_order
+    @items = Item.all
+    #@items = Item.page(params[:page]).reverse_order
     @admin = current_admin
     @item = Item.new
   end
@@ -55,6 +57,6 @@ class Admin::ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:admin_id, :category_id, :name, :image, :price, :introduction)
+    params.require(:item).permit(:admin_id, :category_id, :name, :image, :introduction)
   end
 end
