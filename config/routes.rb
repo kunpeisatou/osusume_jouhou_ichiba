@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     root "homes#top"
     get 'search' => 'homes#search', as: 'search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
+    resources :admin, only: [:edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items
     resources :categories, only: [:index, :create, :edit, :update]
