@@ -1,0 +1,31 @@
+<h3>manage/admin/edit</h3>
+
+<div class='container px-5 px-sm-0'>
+   <div class='row'>
+     <div class='col-md-12'>
+       <h2>メーカー情報編集</h2>
+            <tr>
+              <td>現在のメーカー名</td>
+              <td><%= @admin.name %></td>
+            </tr>
+       <%= form_with model:@admin, url:manage_admin_path, local:true do |f| %>
+         <table class='table table-hover table-inverse'>
+            <tr>
+              <td>メーカー名</td>
+              <td><%= f.text_field :name, autofocus: true %></td>
+            </tr>
+         </table>
+         <table>
+             <tr>
+                 <td>
+                     <!-- 決定ボタン -->
+                     <div class="form-group">
+                       <%= f.submit "変更内容を保存", :class=>"btn btn-secondary"%>
+                     </div>
+                 </td>
+             </tr>
+         </table>
+       <% end %>
+     </div>
+   </div>
+</div>
