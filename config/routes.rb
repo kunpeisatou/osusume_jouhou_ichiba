@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
     resources :addresses, only: [:index, :edit ,:create, :update, :destroy]
+    resources :categories, only: [:index, :show]
   end
   
   # 管理者用
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  namespace :admin do
+  namespace :manage do
     root "homes#top"
     get 'search' => 'homes#search', as: 'search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'

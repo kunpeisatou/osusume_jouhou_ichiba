@@ -1,0 +1,56 @@
+<h3>manage/items/edit</h3>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>商品編集</h1>
+      <!--エラーメッセージここから-->
+      <% if @item.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= @item.errors.count %> error prohibited this obj from being saved:</h3>
+          <ul>
+            <% @item.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <!--エラーメッセージここまで-->
+            
+      <!-- 編集フォーム -->
+      <%= form_with model: @item, url: manage_item_path , local:true do |f| %>
+        <table class='table table-hover table-inverse'>
+        <!-- 画像 -->
+          <tr>
+            <td>商品画像</td>
+            <td><%= f.attachment_field :image, placeholder: "商品画像",:class =>"form-control-file user_image" %></td>
+          </tr>
+        <!-- 商品名 -->
+          <tr>
+            <td>商品名</td>
+            <td><%= f.text_field :name, autofocus: true, :class =>'form-control book_title'%></td>
+          </tr>
+        <!-- 商品説明 -->
+          <tr>
+            <td>商品説明</td>
+            <td><%= f.text_area :introduction, autofocus: true, :class =>'form-control book_body'%></td>
+          </tr>
+        <!-- ジャンル -->
+          <tr>
+            <td>ジャンル</td>
+            <td>
+              <%= f.collection_select :category_id, Category.all, :id, :name %>
+            </td>
+          </tr>
+        </table>
+        
+        <!-- 決定ボタン -->
+        <div class="form-group">
+          <%= f.submit "変更を保存", :class=>"btn btn-success"%>
+        </div>
+      <% end %>
+      <!-- 編集フォームここまで -->
+         
+      <%= link_to"商品詳細へ戻る",manage_item_path %>
+    </div>
+  </div>
+</div>
