@@ -1,0 +1,38 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <h2>会員情報編集</h2>
+        <%= form_with model:@customer, url:customer_path, local:true do |f| %>
+        <table class='table table-hover table-inverse'>
+          <tr>
+            <td>氏名</td>
+            <td><%= f.text_field :last_name, autofocus: true %><%= f.text_field :first_name, autofocus: true %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= f.text_field :last_name_kana, autofocus: true %><%= f.text_field :first_name_kana, autofocus: true %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.text_field :email, autofocus: true %></td> 
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>
+            <!-- 決定ボタン -->
+              <div class="form-group">
+                <%= f.submit "変更内容を保存", :class=>"btn btn-secondary"%>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <%= link_to"退会する",customers_unsubscribe_path ,class:"btn btn-secondary"%>
+              </div>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

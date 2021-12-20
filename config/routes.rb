@@ -21,20 +21,22 @@ Rails.application.routes.draw do
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
     resources :addresses, only: [:index, :edit ,:create, :update, :destroy]
+    resources :categories, only: [:index, :show]
+    resources :admins, only: [:show]
   end
   
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:passwords] ,controllers: {
-  registrations: "admin/registrations",
-  sessions: "admin/sessions"
+  registrations: "manage/registrations",
+  sessions: "manage/sessions"
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  namespace :admin do
+  namespace :manage do
     root "homes#top"
     get 'search' => 'homes#search', as: 'search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
-    resources :admin, only: [:edit, :update]
+    resources :admins, only: [:edit, :update, :show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items
     resources :categories, only: [:index, :create, :edit, :update]
