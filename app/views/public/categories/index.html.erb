@@ -25,5 +25,9 @@
       <!-- ジャンル一覧表示ここまで -->
       <%= paginate @categories %>
     </div>
+      <h2 class="section-ttl">登録がお済みでない方</h2>
+      <p><%= link_to "こちら", new_customer_registration_path, class: "underline" %>から新規登録を行なってください。</p>
+      <h2 class="section-ttl">既に登録済みの方</h2>
+      <p><%= link_to "こちら", new_customer_session_path, class: "underline" %>からログインしてください。</p>
   </div>
 </div>

@@ -22,5 +22,6 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+<h2 class="section-ttl">登録がお済みでない方</h2>
+<p><%= link_to "こちら", new_customer_registration_path, class: "underline" %>から新規登録を行なってください。</p>
 <%= render "public/shared/links" %>

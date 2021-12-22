@@ -5,6 +5,18 @@
    <div class='row'>
      <div class='col-md-12'>
        <h2>メーカー情報編集</h2>
+       <!--エラーメッセージここから-->
+       <% if @admin.errors.any? %>
+          <div id="error_explanation">
+            <h3><%= @admin.errors.count %> error prohibited this obj from being saved:</h3>
+            <ul>
+              <% @admin.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <!--エラーメッセージここまで-->
             <tr>
               <td>現在のメーカー名</td>
               <td><%= @admin.name %></td>
