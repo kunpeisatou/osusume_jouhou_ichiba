@@ -1,6 +1,10 @@
 class Manage::AdminsController < ApplicationController
   before_action :authenticate_admin!
   
+  def index
+    @admins = Admin.all.page(params[:page]).reverse_order
+  end
+  
   def show
     @admin = Admin.find(params[:id])
    
