@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     resources :admins, only: [:index, :edit, :update, :show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items
-    resources :categories, only: [:index, :create, :edit, :update]
+    resources :categories, only: [:index, :create, :edit, :update, :show]
   end
 
 end
