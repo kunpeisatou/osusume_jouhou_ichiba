@@ -13,7 +13,7 @@ class Manage::CategoriesController < ApplicationController
       flash[:notice] = 'You have created category successfully.'
       redirect_to manage_categories_path
     else
-      @categories = Category.all
+      @categories = Category.page(params[:page]).reverse_order
       render :index
     end
 

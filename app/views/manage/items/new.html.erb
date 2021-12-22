@@ -4,6 +4,18 @@
   <div class="row">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
       <h1>商品新規投稿</h1>
+      <!--エラーメッセージここから-->
+      <% if @item.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= @item.errors.count %> error prohibited this obj from being saved:</h3>
+          <ul>
+            <% @item.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <!--エラーメッセージここまで-->
       <div class="col-sm-10 px-sm-0 mx-auto md-5">
         <%= form_with url:manage_items_path, model:@item, local:true do |f| %>
           <table>
