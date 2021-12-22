@@ -7,6 +7,11 @@ class Manage::CategoriesController < ApplicationController
     @category = Category.new
   end
   
+  def show
+    @category = Category.find(params[:id])
+    @items = @category.items.page(params[:page]).reverse_order
+  end
+  
   def create
     @category = Category.new(category_params)
     if @category.save

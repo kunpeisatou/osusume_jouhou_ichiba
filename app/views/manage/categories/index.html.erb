@@ -43,7 +43,7 @@
           <% @categories.each do |category| %>
             <tr>
               <td>
-                <%= category.name %>
+                <%= link_to category.name,manage_category_path(category) %>
               </td>
               <td>
                 <%= link_to"編集する",edit_manage_category_path(category.id) ,class:"btn btn-sm btn-success"%>
