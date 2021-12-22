@@ -1,9 +1,14 @@
 class Manage::CategoriesController < ApplicationController
   before_action :authenticate_admin!
   
+  def index
+    #@genres = Genre.all
+    @categories = Category.page(params[:page]).reverse_order
+    @category = Category.new
+  end
+  
   def create
-    @category = Category.new(genre_params)
-    
+    @category = Category.new(category_params)
     if @category.save
       flash[:notice] = 'You have created category successfully.'
       redirect_to manage_categories_path
@@ -12,12 +17,6 @@ class Manage::CategoriesController < ApplicationController
       render :index
     end
 
-  end
-
-  def index
-    #@genres = Genre.all
-    @categories = Category.page(params[:page]).reverse_order
-    @category = Category.new
   end
 
   def edit
