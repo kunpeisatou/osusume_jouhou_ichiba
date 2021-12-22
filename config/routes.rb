@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   sessions: "public/sessions"
   }
  scope module: :public do
-    root "homes#top"
+    root "categories#index"
     get "/about" => "homes#about"
     get "/orders/thanks" => "orders#thanks"
     get "/customers/my_page" => "customers#show"
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
     resources :addresses, only: [:index, :edit ,:create, :update, :destroy]
-    resources :categories, only: [:index, :show]
+    resources :categories, only: [:show]
     resources :admins, only: [:show]
   end
   
