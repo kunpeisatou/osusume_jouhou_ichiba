@@ -12,7 +12,6 @@ class Manage::ItemsController < ApplicationController
       #redirect_to manage_item_path(@item)
       redirect_to manage_items_path
     else
-      @item=Item.new
       render :new
     end 
   end
