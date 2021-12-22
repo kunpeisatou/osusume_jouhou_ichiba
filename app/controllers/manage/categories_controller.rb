@@ -1,4 +1,5 @@
 class Manage::CategoriesController < ApplicationController
+  before_action :authenticate_admin!
   
   def create
     @category = Category.new(genre_params)
