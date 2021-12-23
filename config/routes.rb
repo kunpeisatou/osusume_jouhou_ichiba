@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
     resources :customers, only: [:edit, :update]
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show]do
+     resource :favorites, only: [:create, :destroy]
+    end
+    
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete "/cart_items" => "cart_items#all_destroy"
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'

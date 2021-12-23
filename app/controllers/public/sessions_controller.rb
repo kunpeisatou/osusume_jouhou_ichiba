@@ -24,14 +24,22 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  def reject_inactive_customer
+ 
+  
+  # # 退会しているかを判断するメソッド
+  def customer_state
+    ## 【処理内容1】 入力されたemailからアカウントを1件取得
     @customer = Customer.find_by(email: params[:customer][:email])
-    if @customer
-      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_active
-        flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
-        redirect_to new_customer_session_path
-      end
+  
+    ## アカウントを取得できなかった場合、このメソッドを終了する
+    return if !@customer
+  
+    ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
+    ## 【処理内容3】
+    flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
+    redirect_to new_customer_registration_path
     end
-  end  
+  end
   
 end
