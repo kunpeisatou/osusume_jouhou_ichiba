@@ -1,0 +1,12 @@
+<div class="customer-leave container px-5 px-md-0 text-center">
+  <h3><strong>本当に退会しますか？</strong></h3>
+  <p class="mt-5">
+    退会すると、お気に入り情報が削除されます。<br />
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
+
+  <div class="mt-5">
+    <%= link_to "退会しない", customers_my_page_path, class: "btn btn-primary mr-5" %>
+    <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-danger" %>
+  </div>
+</div>
