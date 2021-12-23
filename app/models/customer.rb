@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :favorites, dependent: :destroy
+  has_many :favorite_items, through: :favorites, source: :item
   
   validates :last_name, presence: true
   validates :first_name, presence: true

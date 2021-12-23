@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
   
   def show
     @customer = current_customer
-   
+    @items = @customer.favorite_items.page(params[:page]).reverse_order
   end 
   
   def edit
