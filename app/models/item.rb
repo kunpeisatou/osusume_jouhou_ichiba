@@ -4,6 +4,7 @@ class Item < ApplicationRecord
    attachment :image
    
    has_many :favorites, dependent: :destroy
+   has_many :favorite_customers, through: :favorites, source: :customer
 
    def favorited_by?(customer)
      favorites.where(customer_id: customer.id).exists?
