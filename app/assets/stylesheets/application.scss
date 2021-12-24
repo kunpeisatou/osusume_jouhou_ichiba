@@ -16,3 +16,22 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+/* 画像スライダー設定　ここから */
+/* 高さを指定することにより画像が表示される */
+#box{
+  height: 600px;
+}
+.image1 {
+  background-image: url(sweets_candy.png);
+}
+.image2 {
+  background-image: url(sweets_cookie.png);
+}
+.image3 {
+  background-image: url(sweets_purin_normal.png);
+}
+.image4 {
+  background-image: url(sweets_shortcake.png);
+}
+/* 画像スライダー設定　ここまで */
