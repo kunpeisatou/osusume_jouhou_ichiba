@@ -5,10 +5,12 @@
           <h3>カスタマーログイン状態</h3>
           <%= link_to 'NaganoCake', root_path, class: "logo" %>
           <ul class="flex">
+            <li><%= link_to " マイページ",customers_my_page_path,class: 'btn btn-outline-secondary mx-3 my-1' %></li>
             <li><%= link_to '商品一覧', items_path %></li>
             <li><%= link_to 'カテゴリ一覧', root_path %></li>
             <li><%= link_to '登録内容編集', edit_customer_path(current_customer) %></li>
             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
+            
           </ul>
           <%= form_tag(manage_search_path, method: :get) do %>
             <%= text_field_tag "search[content]", "", :placeholder =>"会員: 姓,名,セイ,メイ / 商品: 商品名" %>

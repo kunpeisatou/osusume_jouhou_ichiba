@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     root "categories#index"
     get 'search', to: 'searches#search'
     get "/about" => "homes#about"
-    get "/orders/thanks" => "orders#thanks"
     get "/customers/my_page" => "customers#show"
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
@@ -17,14 +16,6 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]do
      resource :favorites, only: [:create, :destroy]
     end
-    
-    resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete "/cart_items" => "cart_items#all_destroy"
-    get 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :orders, only: [:new, :create, :index, :show]
-    post "/orders/confirm" => "orders#confirm"
-    get "/orders/complete" => "orders#complete"
-    resources :addresses, only: [:index, :edit ,:create, :update, :destroy]
     resources :categories, only: [:show]
     resources :admins, only: [:show]
   end
