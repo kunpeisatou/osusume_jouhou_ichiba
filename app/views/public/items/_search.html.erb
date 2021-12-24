@@ -1,5 +1,4 @@
-<%= render 'public/customers/header' %>
-<h3>public/items/index</h3>
+<h3>public/items/_search</h3>
 
 <div class="d-flex">
     <h2 class="table-secondary mb-3 ml-3 d-inline">商品説明一覧</h2>
@@ -12,7 +11,7 @@
         <th>更新日時</th>
     </thead>
     <tbody>
-        <% @items.each do |item| %>
+        <% items.each do |item| %>
             <tr>
                 <td><%= item.admin.name %><%= link_to item.admin.name,admin_path(item.admin) %></td>
                 <td><%= link_to item.name,item_path(item) %></td>
@@ -25,4 +24,3 @@
         <% end %>
     </tbody>
 </table>
-<%= paginate @items %>
