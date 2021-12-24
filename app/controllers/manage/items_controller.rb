@@ -1,5 +1,6 @@
 class Manage::ItemsController < ApplicationController
   before_action :authenticate_admin!
+  layout 'admin'
   
   def new
     @item=Item.new
