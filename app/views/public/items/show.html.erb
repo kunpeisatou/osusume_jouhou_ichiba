@@ -1,15 +1,5 @@
 <%= render 'public/customers/header' %>
 <%= @item.name %>
-<% if @item.favorited_by?(current_customer) %>
-    <p>
-      <%= link_to item_favorites_path(@item), method: :delete do %>
-        ♥<%= @item.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to item_favorites_path(@item), method: :post do %>
-        ♡<%= @item.favorites.count %> いいね
-      <% end %>
-    </p>
-<% end %>
+<div id="item_<%= @item.id%>"><!-- id=内にてbook.idを指定することでページ全てのいいね欄に反映される事を防ぐ（idタグはページに１回しか使えない規則を利用） -->
+  <%= render 'public/favorites/favorite-btn', item: @item %>
+</div>
