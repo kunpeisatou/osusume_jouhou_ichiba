@@ -11,16 +11,67 @@
   </head>
 
   <body>
+    <header class="header-footer">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          
+          <div>
+            <%= link_to image_tag("sweets_candy.png", size: "63x50"), root_path %>
+          </div>
+          <div class="ml-4 mt-2 navbar-brand">
+            <h2>サトーマート　おすすめ情報市場</h2>
+          </div>
+          <button class="navbar-toggler menu-trigger" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          
+          
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                    <li><%= link_to 'トップページ', root_path,class: 'fas fa-home nav-link text-light' %></li>
+                    <li><%= link_to '商品一覧', items_path,class: 'fas fa-book-open nav-link text-light' %></li>
+                    <li><%= link_to "マイページ",customers_my_page_path,class: 'fas fa-users nav-link text-light' %></li>
+                    <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+              <% else %>
+                    <li>カスタマーログアウト状態</li>
+                    <li><%= link_to '新規登録', new_customer_registration_path,class: 'btn btn-outline-secondary mx-3 my-1' %></li>
+                    <li><%= link_to 'ログイン', new_customer_session_path,class: 'btn btn-outline-secondary mx-3 my-1' %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div> 
+      </nav>
+      <!--検索フォームここから-->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class='container'>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="navbar-nav ml-auto">
+              <%= form_tag(search_path, method: :get) do %>
+                <%= text_field_tag 'content' %>
+                <%= select_tag 'model', options_for_select({ "商品" => "item", "メーカー" => "admin" }) %>
+                <%= select_tag 'method', options_for_select({ "完全一致" => "perfect", "部分一致" => "partial", "前方一致" => "forward", "後方一致" => "backward" }) %>
+                <%= submit_tag '検索' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!--検索フォームここまで-->
+    </header>
     
     
     <main>
+      <p id="notice"><%= flash[:notice] %></p>
       <%= yield %>
     </main>
     
-    <footer class="text-center", style="height:50px">
+    <footer class="text-center header-footer", style="height:50px">
       <div class="container">
         <div class="footer_copyright">
-          footer
+          CopyRight Satou Mart
         </div>
       </div>
     </footer>
