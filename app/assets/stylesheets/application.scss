@@ -17,10 +17,25 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.separate {
+  margin-top: 40px;
+}
+
+.header-footer {
+  background-color: #40E0D0;
+}
+
+body{
+  background-image: image-url('texture1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* 画像スライダー設定　ここから */
 /* 高さを指定することにより画像が表示される */
 #box{
-  height: 600px;
+  height: 500px;
+  margin-bottom: 50px;
 }
 .image1 {
   background-image: url(sweets_candy.png);
