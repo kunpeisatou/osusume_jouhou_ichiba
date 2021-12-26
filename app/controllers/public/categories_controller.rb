@@ -7,5 +7,6 @@ class Public::CategoriesController < ApplicationController
   
   def show
     @category = Category.find(params[:id])
+    @items = @category.items.page(params[:page]).reverse_order
   end
 end
