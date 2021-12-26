@@ -5,6 +5,7 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :items
+  attachment :image
   
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
