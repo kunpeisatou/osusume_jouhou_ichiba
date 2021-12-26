@@ -1,5 +1,7 @@
 <%= render 'public/customers/header' %>
 <%= @item.name %>
-<div id="item_<%= @item.id%>"><!-- id=内にてbook.idを指定することでページ全てのいいね欄に反映される事を防ぐ（idタグはページに１回しか使えない規則を利用） -->
-  <%= render 'public/favorites/favorite-btn', item: @item %>
-</div>
+<% if customer_signed_in? %>
+  <div id="item_<%= @item.id%>"><!-- id=内にてbook.idを指定することでページ全てのいいね欄に反映される事を防ぐ（idタグはページに１回しか使えない規則を利用） -->
+    <%= render 'public/favorites/favorite-btn', item: @item %>
+  </div>
+<% end %>
