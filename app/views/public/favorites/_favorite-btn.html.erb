@@ -1,13 +1,9 @@
                     <% if item.favorited_by?(current_customer) %>
                         <p class="favorite-btn">
-                          <%= link_to item_favorites_path(item), method: :delete , remote: true do %>
-                            ♥<%= item.favorites.count %> いいね
-                          <% end %>
+                          <%= link_to '登録済み', item_favorites_path(item), method: :delete , remote: true , class:"btn btn-danger" %>
                         </p>
                         <% else %>
                         <p class="favorite-btn">
-                          <%= link_to item_favorites_path(item), method: :post , remote: true do %>
-                            ♡<%= item.favorites.count %> いいね
-                          <% end %>
+                          <%= link_to 'お気に入り登録', item_favorites_path(item), method: :post , remote: true , class:"btn btn-primary" %>
                         </p>
                     <% end %>
