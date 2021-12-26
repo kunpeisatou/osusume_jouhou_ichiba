@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :manage do
-    root "homes#top"
+    root "items#index"
     get 'search', to: 'searches#search'
     get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
     resources :admins, only: [:index, :edit, :update, :show]

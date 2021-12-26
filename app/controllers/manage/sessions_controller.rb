@@ -26,7 +26,7 @@ class Manage::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def after_sign_in_path_for(resource)
-    manage_items_path
+    manage_root_path
   end
   
   def after_sign_out_path_for(resource)

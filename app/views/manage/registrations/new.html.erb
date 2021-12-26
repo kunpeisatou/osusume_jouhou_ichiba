@@ -1,44 +1,41 @@
-<h2>管理者側サインアップ</h2>
-
 <div class='container'>
   <div class='row'>
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "manage/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-  <h2 class="section-ttl">既に登録済みの方</h2>
-  <p><%= link_to "こちら", new_admin_session_path, class: "underline" %>からログインしてください。</p>
-
-<%= render "manage/shared/links" %>
+    　<h2 class="section-ttl">新規登録</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "manage/shared/error_messages", resource: resource %>
+        
+        <div class="field">
+          <%= f.label :会社名 %><br />
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :パスワード（確認用） %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+      <div class='separate'>
+        <p>既に登録済みの方</p>
+        <p><%= link_to "こちら", new_admin_session_path, class: "underline" %>からログインしてください。</p>
+      </div>
     </div>
   </div>
 </div>
