@@ -1,26 +1,32 @@
-<h4><%= current_customer.last_name + current_customer.first_name %>様のお気に入り商品一覧</h4>
-  <table class="table table-hover table-bordered table-inverse">
-    <thead class="table-secondary">
-    　<th>メーカー名</th>
-      <th>商品名</th>
-      <th>カテゴリー</th>
-      <th>更新日時</th>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
-        <tr>
-          <td><%= link_to item.admin.name,admin_path(item.admin) %></td>
-          <td><%= link_to item.name,item_path(item) %></td>
-          <td><%= item.category.name %></td>
-          <td><%= item.updated_at %></td>
-        </tr>
-      <% end %>
-    </tbody>
-    <%= paginate @items %>
-  </table>
-  
-<h4>登録内容の編集はこちら</h4>
-<div class='offset-md-1'>
-  <%= link_to"登録内容を編集する",edit_customer_path(@customer.id) ,class:"btn btn-sm btn-success"%>
-  
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <h4><%= current_customer.last_name + current_customer.first_name %>様のお気に入り商品一覧</h4>
+      <table class="table table-hover table-bordered table-inverse">
+        <thead class="table-secondary">
+        　<th>メーカー名</th>
+          <th>商品名</th>
+          <th>カテゴリー</th>
+          <th>更新日時</th>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= link_to item.admin.name,admin_path(item.admin) %></td>
+              <td><%= link_to item.name,item_path(item) %></td>
+              <td><%= item.category.name %></td>
+              <td><%= item.updated_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @items %>
+      
+    <div>
+      <h4>登録内容の編集はこちら</h4>
+    </div>
+    
+    <div class='col-md-12 offset-md-1'>
+      <%= link_to"登録内容を編集する",edit_customer_path(@customer.id) ,class:"btn btn-sm btn-success"%>
+    </div>
+  </div>
 </div>
