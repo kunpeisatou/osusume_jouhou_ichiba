@@ -1,9 +1,6 @@
-<%= render 'manage/admins/header' %>
-<h3>manage/items/show</h3>
-<%= link_to "一覧へ",manage_items_path, class: 'btn btn-success'  %>
-<h2>商品詳細</h2>
 <div class="row">
     <div class="container">
+        <h2>商品詳細</h2>
         <div class="row">
             <div class="col-md-6">
                 <%= attachment_image_tag @item, :image, fallback: "no_image.jpg", size: "300x200" %>
@@ -14,9 +11,13 @@
                         <th>商品名</th>
                         <td><%= @item.name %></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <th>カテゴリ</th>
-                        <td><%= @item.category.name %></td>
+                        <td><%= link_to @item.category.name,manage_category_path(@item.category) %></td>
+                    </tr>
+                    <tr>
+                        <th>メーカー</th>
+                        <td><%= link_to @item.admin.name,manage_admin_path(@item.admin) %></td>
                     </tr>
                     <tr>
                         <th>商品説明</th>
@@ -24,13 +25,20 @@
                     </tr>
                     <tr>
                         <td>
-                            <%= link_to "編集する", edit_manage_item_path(@item), class: "btn btn-outline-success" %>
-                            <% if @item.admin == current_admin %>
-                                <%= link_to "削除", manage_item_path(@item), method: :delete , data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger"%>
-                            <% end %>
+                            <%= link_to "編集する", edit_manage_item_path(@item), class: "btn btn-info" %>
                         </td>
                     </tr>
+                    <% if @item.admin == current_admin %>
+                        <tr>
+                            <td>
+                                <%= link_to "削除", manage_item_path(@item), method: :delete , data: {confirm: "本当に消しますか？"}, class:"btn btn-danger"%>
+                            </td>
+                        </tr>
+                    <% end %>
                 </table>
+                <div class='separate'>
+                    <%= link_to "投稿一覧へ戻る",manage_items_path, class: 'btn btn-success'  %>
+                </div>
             </div>
         </div>
     </div>

@@ -1,66 +1,43 @@
-<%= @admin.name %>
-<%= @admin.introduction %>
-<%= attachment_image_tag @admin, :image, fallback: "no_image.jpg", size: "300x200" %>
-<tr>
-    <td><%= @admin.name %></td>
-    <td><%= @admin.introduction %></td>
-</tr>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <!-- サイドバーここから -->
-    <div class='col-md-9'>
-       <!-- 画像スライダーここから -->
-      <div id="box">
-        <div id="images">
-          <div class="image1"></div>
-          <div class="image2"></div>
-          <div class="image3"></div>
-          <div class="image4"></div>
+    <div class='container px-5 px-sm-0'>
+      <h2>会社名:<%= @admin.name %></h2>
+      <div class='row'>
+        <div class='col-md-5'>
+          <%= attachment_image_tag @admin, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
+        </div>
+        <div class='col-md-7'>
+          <h2>プロフィール</h2>
+          <%= @admin.introduction %>
         </div>
       </div>
-      <!-- 画像スライダーここまで -->
-      
-      <!-- メーカー投稿一覧ここから -->
-      <table class="table table-hover table-bordered table-inverse">
-          <thead class="table-secondary">
-        　　　　<th>メーカー名</th>
-              <th>商品名</th>
-              <th>更新日時</th>
-          </thead>
-          <tbody>
-              <% @items.each do |item| %>
-                  <tr>
-                      <td><%= item.admin.name %></td>
-                      <td><%= link_to item.name,manage_item_path(item) %></td>
-                      <td><%= item.updated_at %></td>
-                　</tr>
-              <% end %>
-          </tbody>
-      </table>
-      <!-- メーカー投稿一覧ここまで -->
     </div>
-    <!-- サイドバーここまで -->
-      
-    <div class='col-md-3'> 
-     <!-- メーカー投稿一覧ここから -->
-      <table class="table table-hover table-bordered table-inverse">
-          <thead class="table-secondary">
-        　　　　<th>メーカー名</th>
-              <th>商品名</th>
-              <th>更新日時</th>
-          </thead>
-          <tbody>
-              <% @items.each do |item| %>
-                  <tr>
-                      <td><%= item.admin.name %></td>
-                      <td><%= link_to item.name,manage_item_path(item) %></td>
-                      <td><%= item.updated_at %></td>
-                　</tr>
-              <% end %>
-          </tbody>
-      </table>
-      <!-- メーカー投稿一覧ここまで -->
-      
+    
+    
+    
+    <!-- 投稿一覧 -->
+    <div class="d-flex separate">
+      <h2 class="table-secondary mb-3 ml-3 d-inline"><%= @admin.name %>の商品記事一覧</h2>
     </div>
-  </div>
+    <table class="table table-hover table-bordered table-inverse">
+      <thead class="table-secondary">
+      　<th>メーカー名</th>
+        <th>商品名</th>
+        <th>カテゴリー</th>
+        <th>更新日時</th>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.admin.name %></td>
+            <td><%= link_to item.name,manage_item_path(item) %></td>
+            <td><%= link_to item.category.name,manage_category_path(item.category) %></td>
+            <td><%= item.updated_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @items %>
+    <%= link_to "メーカー一覧へ戻る",manage_admins_path, class: 'btn btn-success'  %>
+  </div>  
 </div>
