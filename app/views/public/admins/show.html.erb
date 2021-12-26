@@ -1,4 +1,48 @@
-
-<%= @admin.name %>
-<%= @admin.introduction %>
-<%= attachment_image_tag @admin, :image, fallback: "no_image.jpg", size: "300x200" %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='container px-5 px-sm-0'>
+      <h2>会社名:<%= @admin.name %></h2>
+      <div class='row'>
+        <div class='col-md-5'>
+          <%= attachment_image_tag @admin, :image, :fill, 300, 300, fallback: "no_image.jpg" %>
+        </div>
+        <div class='col-md-7'>
+          <h2>プロフィール</h2>
+          <%= @admin.introduction %>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <!-- 投稿一覧 -->
+    <div class="d-flex separate">
+      <h2 class="table-secondary mb-3 ml-3 d-inline"><%= @admin.name %>の商品記事一覧</h2>
+    </div>
+    <table class="table table-hover table-bordered table-inverse">
+      <thead class="table-secondary">
+      　<th>メーカー名</th>
+        <th>商品名</th>
+        <th>カテゴリ</th>
+        <th>更新日時</th>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.admin.name %></td>
+            <td><%= link_to item.name,item_path(item) %></td>
+            <td><%= link_to item.category.name,category_path(item.category) %></td>
+            <td><%= item.updated_at %></td>
+            <% if customer_signed_in? %>
+              <td id="item_<%= item.id%>"><!-- id=内にてbook.idを指定することでページ全てのいいね欄に反映される事を防ぐ（idタグはページに１回しか使えない規則を利用） -->
+                <%= render 'public/favorites/favorite-btn', item: item %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @items %>
+    <%= link_to "商品一覧へ戻る",items_path, class: 'btn btn-success'  %>
+   </div>
+  </div>
