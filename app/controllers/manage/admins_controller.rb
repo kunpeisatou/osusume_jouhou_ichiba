@@ -8,7 +8,7 @@ class Manage::AdminsController < ApplicationController
   
   def show
     @admin = Admin.find(params[:id])
-   
+    @items = @admin.items.page(params[:page]).reverse_order 
   end 
   
   def edit
@@ -29,7 +29,7 @@ class Manage::AdminsController < ApplicationController
    private
 
   def admin_params
-    params.require(:admin).permit(:name)
+    params.require(:admin).permit(:name, :image, :introduction)
   end
 end
 

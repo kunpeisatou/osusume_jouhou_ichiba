@@ -24,8 +24,16 @@
        <%= form_with model:@admin, url:manage_admin_path, local:true do |f| %>
          <table class='table table-hover table-inverse'>
             <tr>
+              <td>商品画像</td>
+              <td><%= f.attachment_field :image, placeholder: "商品画像",:class =>"form-control-file user_image" %></td>
+            </tr>
+            <tr>
               <td>メーカー名</td>
               <td><%= f.text_field :name, autofocus: true %></td>
+            </tr>
+            <tr>
+              <td>説明</td>
+              <td><%= f.text_area :introduction, autofocus: true %></td>
             </tr>
          </table>
          <table>
