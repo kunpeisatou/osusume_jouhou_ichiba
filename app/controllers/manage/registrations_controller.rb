@@ -61,10 +61,10 @@ class Manage::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_sign_up_path_for(resource)
-    manage_items_path
+    manage_root_path
   end
 
   def after_update_path_for(resource)
-    manage_items_path
+    manage_root_path
   end
 end
