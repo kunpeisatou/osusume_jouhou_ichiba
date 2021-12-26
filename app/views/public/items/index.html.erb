@@ -18,9 +18,11 @@
                 <td><%= link_to item.name,item_path(item) %></td>
                 <td><%= item.category.name %></td>
                 <td><%= item.updated_at %></td>
-                <td id="item_<%= item.id%>"><!-- id=内にてbook.idを指定することでページ全てのいいね欄に反映される事を防ぐ（idタグはページに１回しか使えない規則を利用） -->
-                  <%= render 'public/favorites/favorite-btn', item: item %>
-                </td>
+                <% if customer_signed_in? %>
+                    <td id="item_<%= item.id%>"><!-- id=内にてbook.idを指定することでページ全てのいいね欄に反映される事を防ぐ（idタグはページに１回しか使えない規則を利用） -->
+                      <%= render 'public/favorites/favorite-btn', item: item %>
+                    </td>
+                <% end %>
           　</tr>
         <% end %>
     </tbody>
