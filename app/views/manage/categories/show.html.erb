@@ -1,10 +1,7 @@
-<%= render 'manage/admins/header' %>
-<h3>manage/items/show</h3>
-<%= link_to "カテゴリ一覧へ",manage_categories_path, class: 'btn btn-success'  %>
-<h2>商品情報一覧　【カテゴリ：<%= @category.name %>】</h2>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-12 offset-md-1'>
+      <h2>商品情報一覧　【カテゴリ：<%= @category.name %>】</h2>
       <!-- ジャンル一覧表示 -->
       <table class="table table-hover table-bordered table-inverse">
           <thead class="table-secondary">
@@ -24,6 +21,9 @@
       </table>
       <!-- ジャンル一覧表示ここまで -->
       <%= paginate @items %>
+      <div class='separate'>
+        <%= link_to "カテゴリ一覧へ",manage_categories_path, class: 'btn btn-success'  %>
+      </div>
     </div>
   </div>
 </div>

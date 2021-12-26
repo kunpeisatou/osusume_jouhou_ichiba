@@ -25,6 +25,11 @@
         <th>商品名</th>
         <th>カテゴリー</th>
         <th>更新日時</th>
+        <% if customer_signed_in? %>
+          <th>
+            お気に入り 
+          </th>
+        <% end %>
       </thead>
       <tbody>
         <% @items.each do |item| %>

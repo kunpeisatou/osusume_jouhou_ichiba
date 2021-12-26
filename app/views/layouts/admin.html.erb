@@ -33,7 +33,7 @@
               <% if admin_signed_in? %>
                 <li><%= link_to '商品一覧', manage_items_path,class: 'btn btn-outline-secondary mx-1 my-1' %></li>
                 <li><%= link_to 'カテゴリ一覧', manage_categories_path,class: 'btn btn-outline-secondary mx-1 my-1' %></li>
-                <li><%= link_to '登録内容編集', edit_manage_admin_path(current_admin),class: 'btn btn-outline-secondary mx-1 my-1' %></li>
+                <li><%= link_to 'メーカー一覧', manage_admins_path,class: 'btn btn-outline-secondary mx-1 my-1' %></li>
                 <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: 'btn btn-outline-secondary mx-1 my-1' %></li>
               <% else %>
                 <li><%= link_to '新規登録', new_admin_registration_path,class: 'btn btn-outline-secondary mx-3 my-1' %></li>
@@ -50,6 +50,9 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <div class="navbar-nav ml-auto navbar-brand">
               <h5>メーカー様登録用画面</h5>
+              <% if admin_signed_in? %>
+              　<h5>ログインユーザー：<%= current_admin.name %>様</h5>
+              <% end %>
             </div>
           </div>
         </div>
