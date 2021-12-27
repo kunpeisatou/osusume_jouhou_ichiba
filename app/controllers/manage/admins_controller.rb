@@ -13,6 +13,14 @@ class Manage::AdminsController < ApplicationController
   
   def edit
     @admin = Admin.find(params[:id])
+    if @admin == current_admin
+      render "edit"
+    else
+      redirect_to manage_admin_path
+    end
+    
+    
+    @admin = Admin.find(params[:id])
   end 
   
   def update
