@@ -52,7 +52,7 @@
             <div class="navbar-nav ml-auto navbar-brand">
               <h5>メーカー様登録用画面</h5>
               <% if admin_signed_in? %>
-              　<h5>ログインユーザー：<%= current_admin.name %>様</h5>
+              　<h5>ログインユーザー：<%= link_to current_admin.name,manage_admin_path(current_admin) %>様</h5>
               <% end %>
             </div>
           </div>
