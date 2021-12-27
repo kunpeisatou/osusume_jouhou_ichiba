@@ -1,5 +1,3 @@
-<h3>public/items/_search</h3>
-
 <div class="d-flex">
     <h2 class="table-secondary mb-3 ml-3 d-inline">商品説明一覧</h2>
 </div>
@@ -13,13 +11,10 @@
     <tbody>
         <% items.each do |item| %>
             <tr>
-                <td><%= item.admin.name %><%= link_to item.admin.name,admin_path(item.admin) %></td>
+                <td><%= link_to item.admin.name,admin_path(item.admin) %></td>
                 <td><%= link_to item.name,item_path(item) %></td>
                 <td><%= item.category.name %></td>
                 <td><%= item.updated_at %></td>
-                <td class="favorite-btn" id="favorite_btn_<%= item.id%>"><!-- id=内にてbook.idを指定することでページ全てのいいね欄に反映される事を防ぐ（idタグはページに１回しか使えない規則を利用） -->
-                  <%= render 'public/favorites/favorite-btn', item: item %>
-                </td>
           　</tr>
         <% end %>
     </tbody>
