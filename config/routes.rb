@@ -30,9 +30,7 @@ Rails.application.routes.draw do
   namespace :manage do
     root "items#index"
     get 'search', to: 'searches#search'
-    get 'customers/:customer_id/orders' => 'orders#index', as: 'customer_orders'
     resources :admins, only: [:index, :edit, :update, :show]
-    resources :customers, only: [:index, :show, :edit, :update]
     resources :items
     resources :categories, only: [:index, :create, :edit, :update, :show]
   end
