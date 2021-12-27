@@ -9,6 +9,11 @@
         <div class='col-md-7'>
           <h2>プロフィール</h2>
           <%= @admin.introduction %>
+          <% if @admin == current_admin %>
+            <div class='separate'>
+              <%= link_to "登録内容を編集する", edit_manage_admin_path(@admin), class: "btn btn-info" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -38,6 +43,7 @@
       </tbody>
     </table>
     <%= paginate @items %>
+    
     <%= link_to "メーカー一覧へ戻る",manage_admins_path, class: 'btn btn-success'  %>
   </div>  
 </div>

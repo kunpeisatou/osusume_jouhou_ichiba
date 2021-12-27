@@ -23,12 +23,12 @@
                         <th>商品説明</th>
                         <td><%= @item.introduction %></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <%= link_to "編集する", edit_manage_item_path(@item), class: "btn btn-info" %>
-                        </td>
-                    </tr>
                     <% if @item.admin == current_admin %>
+                        <tr>
+                            <td>
+                                <%= link_to "編集する", edit_manage_item_path(@item), class: "btn btn-info" %>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <%= link_to "削除", manage_item_path(@item), method: :delete , data: {confirm: "本当に消しますか？"}, class:"btn btn-danger"%>
