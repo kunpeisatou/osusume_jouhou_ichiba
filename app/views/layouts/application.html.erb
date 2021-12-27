@@ -3,20 +3,20 @@
   <head>
     <title>OsusumeJouhouIchiba</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %> 
+    <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    
+
   </head>
 
   <body>
     <header class="header-footer">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-          
+
           <div>
-            <%= link_to image_tag("image0.jpeg", size: "80x70"), root_path %>
+            <%= link_to image_tag("image0.jpg", size: "80x70"), root_path %>
           </div>
           <div class="ml-4 mt-2 navbar-brand">
             <h4>サトーマート</h4>
@@ -27,8 +27,8 @@
             <span></span>
             <span></span>
           </button>
-          
-          
+
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
@@ -44,7 +44,7 @@
               <% end %>
             </ul>
           </div>
-        </div> 
+        </div>
       </nav>
       <!--検索フォームここから-->
       <nav class="navbar navbar-expand-lg navbar-dark">
@@ -66,13 +66,13 @@
       </nav>
       <!--検索フォームここまで-->
     </header>
-    
-    
+
+
     <main>
       <p id="notice"><%= flash[:notice] %></p>
       <%= yield %>
     </main>
-    
+
     <footer class="text-center header-footer", style="height:50px">
       <div class="container">
         <div class="footer_copyright">
@@ -83,5 +83,5 @@
       </div>
     </footer>
   </body>
-  
+
 </html>
