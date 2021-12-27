@@ -18,16 +18,13 @@ class Manage::AdminsController < ApplicationController
     else
       redirect_to manage_admin_path
     end
-    
-    
-    @admin = Admin.find(params[:id])
   end 
   
   def update
      @admin = Admin.find(params[:id])
     if @admin.update(admin_params)
       flash[:notice] = 'You have updated user successfully.'
-      redirect_to manage_root_path
+      redirect_to manage_admin_path
     else
       render :edit
     end
