@@ -15,31 +15,44 @@ class Public::SearchesController < ApplicationController
 
   private
   
-  def search_for(model, content, method)
-    # 選択したモデルがuserだったら
+  def search_for(model, content, method) #コードを短くする為に修正
+    # 選択したモデルがitemだったら
     if model == 'item'
-      # 選択した検索方法がが完全一致だったら
-      if method == 'perfect'
-        Item.where(name: content)
-      # 選択した検索方法がが部分一致だったら
-      elsif method == 'partial'
-        Item.where('name LIKE ?', "%#{content}%")
-      elsif method == 'forward'
-        Item.where('name LIKE ?', "#{content}%")
-      else
-        Item.where('name LIKE ?', "%#{content}")
-      end
-    # 選択したモデルがbookだったら
+      Item.search(content, method)
+    # 選択したモデルがadminだったら
     elsif model == 'admin'
-      if method == 'perfect'
-        Admin.where(name: content)
-      elsif method == 'partial'
-        Admin.where('name LIKE ?', "%#{content}%")
-      elsif method == 'forward'
-        Admin.where('name LIKE ?', "#{content}%")
-      else
-        Admin.where('name LIKE ?', "%#{content}") 
-      end
+      Admin.search(content, method)
     end
   end
+  
+  
+  #def search_for(model, content, method)
+    # 選択したモデルがuserだったら
+    #if model == 'item'
+      # 選択した検索方法がが完全一致だったら
+      #if method == 'perfect'
+        #Item.where(name: content)
+      # 選択した検索方法がが部分一致だったら
+      #elsif method == 'partial'
+        #Item.where('name LIKE ?', "%#{content}%")
+      #elsif method == 'forward'
+        #Item.where('name LIKE ?', "#{content}%")
+      #else
+        #Item.where('name LIKE ?', "%#{content}")
+      #end
+    # 選択したモデルがbookだったら
+    #elsif model == 'admin'
+      #if method == 'perfect'
+        #Admin.where(name: content)
+      #elsif method == 'partial'
+        #Admin.where('name LIKE ?', "%#{content}%")
+      #elsif method == 'forward'
+        #Admin.where('name LIKE ?', "#{content}%")
+      #else
+        #Admin.where('name LIKE ?', "%#{content}") 
+      #end
+    #end
+  #end
+  
+  
 end

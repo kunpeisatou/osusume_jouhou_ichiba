@@ -33,10 +33,14 @@ body{
   background-image: image-url('texture1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
 }
 
  main{
   margin-bottom: 40px;
+  flex: 1;
 }
 
  .inner{
@@ -68,3 +72,7 @@ body{
   background-image: url(top4.jpg);
 }
 /* 画像スライダー設定　ここまで */
+
+.footer_copyright {
+  margin-top: 10px;
+}
